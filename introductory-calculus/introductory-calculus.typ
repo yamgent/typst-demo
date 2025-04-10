@@ -1,11 +1,9 @@
-
 #import "@preview/noteworthy:0.2.0": noteworthy, definition, example, exercise
 
 #show: noteworthy.with(
   author: "Tan Wang Leng (Scribe)",
   title: "Introductory Calculus"
 )
-#set heading(numbering: "1.1.")
 
 My notes for the Introductory Calculus: Oxford Mathematics 1st Year Student Lecture, by Professor Dan Ciubotaru. All scribing errors are mine.
 
@@ -96,7 +94,7 @@ Suppose two functions $f$ and $g$.
 
 $
   (f dot.op g)' &= f' dot.op g + f dot.op g' \
-  => f dot.op g' &= (f dot.op g)' - f' dot.op g text("     (integrate both sides)") \
+  => f dot.op g' &= (f dot.op g)' - f' dot.op g text(#h(1cm) "(integrate both sides)") \
   therefore integral f dot.op g' dif x &= f dot.op g - integral f' dot.op g dif x
 $
 
