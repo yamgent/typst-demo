@@ -1,4 +1,5 @@
 #import "@preview/noteworthy:0.2.0": noteworthy, definition, example, exercise
+#import "@preview/tablex:0.0.9": *
 
 #show: noteworthy.with(
   author: "Tan Wang Leng (Scribe)",
@@ -117,3 +118,95 @@ $ integral_a^b f dot.op g' dif x = [f dot.op g]_a^b - integral_a^b f' dot.op g d
   $
 ]
 
+#example[
+  $ I = integral underbrace((2x - 1), g') underbrace(ln(x^2 + 1), f) dif x $
+
+  Hence $g = x^2 - x$
+
+  $ 
+    I &= (x^2 - x) ln (x^2 + 1) - integral (x^2 - x) dot.op frac(2x, x^2 + 1) dif x \
+      &= (x^2 - x) ln (x^2 + 1) - 2 underbrace(integral frac(x^3 - x^2, x^2 + 1) dif x, J)
+  $
+
+  Do long division for the fraction in $J$.
+
+  #tablex(columns: 5, auto-lines: false, stroke: 0.5pt, align: right,
+    $x^3$, $-x^2$, [], [], vlinex(), $x - 1$,
+    hlinex(start: 4, end: 5),
+    $-x^3$, [], $-x$, [], $x^2 + 1$,
+    hlinex(end: 4),
+    [], $-x^2$, $-x$, [], [],
+    [], $x^2$, [], $1$, [],
+    hlinex(start: 1, end: 4),
+    [], [], $-x$, $1$
+  )
+
+  $display(=> frac(x^3 - x^2, x^2 + 1) = (x - 1) + frac(-x + 1, x^2 + 1))$
+
+  #v(0.5cm)
+
+  #line(stroke: 0.5pt)
+
+  $
+    J &= integral [(x - 1) + frac(-x + 1, x^2 + 1)] dif x \
+      &= frac(1, 2) x^2 - x - underbrace(integral frac(x, x^2 + 1) dif x, L) + underbrace(integral frac(dif x, x^2 + 1), arctan x (= tan^(-1) x))
+  $
+
+  Solve $L$ by substitution rule: $u = x^2 + 1 => frac(dif u, dif x) = 2x$.
+
+  $
+    L &= integral frac(x, x^2 + 1) dif x \
+      &= frac(1, 2) integral frac(dif u, u) \
+      &= frac(1, 2) ln abs(u) \
+      &= frac(1, 2) ln (x^2 + 1)
+  $
+
+  $
+    therefore J &= frac(1, 2) x^2 - x - frac(1, 2) ln (x^2 + 1) + tan^(-1) x + C \
+    &= (x^2 - x) ln (x^2 + 1) - x^2 + 2x + ln (x^2 + 1) - 2 tan^(-1) x + C #h(1cm) square.filled
+  $
+]
+
+There are some cases where both $f$ & $g$ will not get simplified, but you do it twice, come back to _what you started with_.
+
+#example[
+  $ 
+    I = integral underbrace(e^x, f) underbrace(sin x, g') dif x
+  $
+
+  If you integrate $sin x = -cos x$, $-cos x = -sin x$ and so on, then can equal each other to find actual answer:
+
+  $ 
+    I &= ... \
+    &= frac(1, 2) e^x (sin x - cos x) + C
+  $
+]
+
+More difficult problems cannot solve in one go, need to find recursive formula.
+
+#example[
+  Reduction/recursive formula
+
+  (We will label it as $I_n$, because we can get $I_(n-1), I_(n-2)$, etc)
+
+  $
+    I_n &= integral cos^n x dif x \
+        &= integral underbrace(cos^(n-1) x, f) underbrace(cos x, g') dif x \
+        &= cos^(n-1) x sin x - integral (n-1) cos^(n-2) x (-sin x) sin x dif x \
+        &= cos^(n-1) x sin x + (n - 1) integral cos^(n-2) x underbrace(sin^2 x, = 1 - cos^2 x) dif x \
+        &= cos^(n-1) x sin x + (n - 1) underbrace(integral cos^(n-2) x dif x, I_(n-2)) - (n-1)underbrace(integral cos^n x dif x, I_n)
+  $
+
+  Solve for $I_n$:
+
+  $
+    n I_n = cos^(n-1) x sin x + (n - 1) I_(n-2)
+  $
+
+  Recursive formula:
+
+  $
+    I_n = frac(1, n) cos^(n-1) x sin x + frac(n-1, n) I_(n-2)
+  $
+  where $n >= 2$.
+]
