@@ -256,7 +256,7 @@ The final form is two direct integrations that we can solve separately.
   $
     x(y^2 - 1) - y(x^2 - 1) dot.op frac(dif y, dif x) &= 0 \
     y(x^2 - 1) dot.op frac(dif y, dif x) &= -x (y^2 - 1) \
-    frac(y, y^2 - 1) dot.op frac(dif y, dif x) &= - frac(x, x^2 - 1) (arrow.l.long.squiggly) \
+    frac(y, y^2 - 1) dot.op frac(dif y, dif x) &= - frac(x, x^2 - 1) #h(3cm) (arrow.l.long.squiggly) \
     underbrace(integral frac(y, y^2 - 1) dif y, "use absolute values") &= underbrace(integral frac(x, 1 - x^2) dif x, "derivative of a log =" D) \
   $
 
