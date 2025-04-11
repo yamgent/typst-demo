@@ -209,4 +209,79 @@ More difficult problems cannot solve in one go, need to find recursive formula.
     I_n = frac(1, n) cos^(n-1) x sin x + frac(n-1, n) I_(n-2)
   $
   where $n >= 2$.
+
+  I also need to know $I_0$ & $I_1$, as it drops down by 2 each iteration, so these are base cases.
+
+  $display(I_0 = integral dif x = x (+ C))$
+
+  $display(I_1 = integral cos x dif x = sin x (+ C))$
+
+  With that, we can get any integral we want. For example:
+
+  $
+    I_6 &= frac(1, 6) cos^5 x sin x + frac(5, 6) I_4 \
+        &= frac(1, 6) cos^5 x sin x + frac(5, 6) (frac(1, 4) cos^3 x sin x + frac(3, 4) I_2)
+  $
+
+  $
+    I_2 = frac(1,2) cos x sin x + frac(1, 2) underbrace(x, I_0)
+  $
+
+  $
+    therefore I_6 = & frac(1, 6) cos^5 x sin x + frac(5, 6 dot.op 4) cos^3 x sin x + frac(5 dot.op 3 dot.op 1, 6 dot.op 4) cos^3 x sin x \
+     &+ frac(5 dot.op 3 dot.op 1, 6 dot.op 4 dot.op 2) cos x sin x + frac(5 dot.op 3 dot.op 1, 6 dot.op 4 dot.op 2) x + C
+  $
+]
+
+== Separable ODEs
+
+The next simpliest ODEs, where:
+
+$ frac(dif y, dif x) = a(x) dot.op b(y) $
+
+where $a(x)$ is *function of x only*, and $b(y)$ is *function of y only*.
+
+Assume that $b(y) != 0$:
+
+$ 
+  frac(1, b(y)) frac(dif y, dif x) &= a(x) \
+  => integral frac(1, b(y)) dif y &= integral a(x) dif x
+$
+
+The final form is two direct integrations that we can solve separately.
+
+#example[
+  Find the genearl solution to the separable differential equation ($0 < x < 1$ to avoid continuity issues): $display(x(y^2 - 1) - y(x^2 - 1) frac(dif y, dif x) = 0)$.
+
+  $
+    x(y^2 - 1) - y(x^2 - 1) dot.op frac(dif y, dif x) &= 0 \
+    y(x^2 - 1) dot.op frac(dif y, dif x) &= -x (y^2 - 1) \
+    frac(y, y^2 - 1) dot.op frac(dif y, dif x) &= - frac(x, x^2 - 1) (arrow.l.long.squiggly) \
+    underbrace(integral frac(y, y^2 - 1) dif y, "use absolute values") &= underbrace(integral frac(x, 1 - x^2) dif x, "derivative of a log =" D) \
+  $
+
+  #rect[$D: [ln (1-x^2)]' = frac(-2x, 1-x^2)$]
+
+  $
+    &... \
+    frac(1, 2) ln |y^2 - 1| &= -frac(1, 2) ln (1 - x^2) + C \
+  $
+
+  Get rid of $log$ by using the property of log ($log a + log b = log a dot.op b$)
+
+  $
+    &... \
+    frac(1, 2) ln |(y^2 - 1)|(1 - x^2) &= C \
+    |(y^2 - 1)|(1 - x^2) &= e^(2C) => zeta (> 0)
+  $
+
+  Therefore, the answer is $|y^2 - 1|underbrace((1 - x^2), > 0) = zeta$ where $zeta > 0$.
+
+  We can drop the absolute to drop the assumption of $zeta$, to get a better looking answer.
+
+  $ (1-y^2)(1-x^2) = zeta $
+
+  ...except $zeta$ cannot be 0, which doesn't sound like solid math. We lost that case in ($arrow.l.long.squiggly$). $y^2 - 1 != 0$, but we need to allow that because $y$ could be $plus.minus 1.$
+
+  $y = plus.minus 1$ is included in the solution if we allow $zeta = 0$ in the answer. Hence $zeta$ can now be any constants.
 ]
