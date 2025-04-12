@@ -16,10 +16,16 @@ ODEs = ordinary differential equations.
   An ODE is a kind of equation that involves the independent variable $x$, a function of $x$ (call it $y$, a dependent variable), and the derivatives of $y$ w.r.t. $x$.
 ]
 
+// 1. fractions can be $(dif y) / (dif x)$ or $frac(dif y, dif x)$
+// I use frac() most of the time because it looks cleaner to me 
+// (most fractions are complicated and requires bracketing their 
+// content up if we just use / instead of frac())
+//
+// 2. Notice that equations don't need to be on a new line to 
+// force it to be on a new line. Just need to add spacing. (i.e, instead
+// of $x$, do $ x $).
 #example[
-  Common ODE forms include:
-
-  $ frac(dif y, dif x), frac(dif^2 y, dif x^2), dots $
+  Common ODE forms include: $ (dif y) / (dif x), frac(dif^2 y, dif x^2), dots $
 ]
 
 The highest order of degree is the order of the differential equation. (Hence, $frac(dif^2 y, dif x^2)$ is of order 2).
@@ -44,9 +50,9 @@ The simpliest kind of ODE is of the form: $frac(dif y, dif x) = f(x)$, which can
 #example[
   From engineering, electrical circuits, we have a simple series circuit (RLC).
 
-  #align(center)[#image("circuit.svg", width: 40%)]
+  #align(center)[#figure(image("circuit.svg", width: 40%), caption: [An example circuit]) <circuit>]
 
-  where
+  where from the symbols in @circuit:
 
   - capacitor $C$ has capacitance
   - resistor $R$ has resistance
@@ -58,9 +64,7 @@ The simpliest kind of ODE is of the form: $frac(dif y, dif x) = f(x)$, which can
 
   Let $Q(t)$ = charge on the capacitor.
 
-  The relationship is:
-
-  $ I = frac(dif Q, dif t) $
+  The relationship is: $ I = frac(dif Q, dif t) $
 
   The Kirchhoff's law states: total voltage is 0 across the circuit.
 
@@ -235,9 +239,7 @@ More difficult problems cannot solve in one go, need to find recursive formula.
 
 == Separable ODEs
 
-The next simpliest ODEs, where:
-
-$ frac(dif y, dif x) = a(x) dot.op b(y) $
+The next simpliest ODEs, where: $ frac(dif y, dif x) = a(x) dot.op b(y) $
 
 where $a(x)$ is *function of x only*, and $b(y)$ is *function of y only*.
 
@@ -251,6 +253,7 @@ $
 The final form is two direct integrations that we can solve separately.
 
 #example[
+  // we can use display() to use inline math the bigger size
   Find the genearl solution to the separable differential equation ($0 < x < 1$ to avoid continuity issues): $display(x(y^2 - 1) - y(x^2 - 1) frac(dif y, dif x) = 0)$.
 
   $
