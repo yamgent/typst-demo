@@ -37,14 +37,14 @@ The simpliest kind of ODE is of the form: $frac(dif y, dif x) = f(x)$, which can
 #example[
   From physical sciences, mechanics, the Newton's second law says that:
 
-  $ accent(F, arrow) = m accent(a, arrow) $
+  $ arrow(F) = m arrow(a) $
 
   where
 
-  - $accent(a, arrow)$ = acceleration (a derivative of velocity wr.t. time).
-  - $accent(a, arrow) = frac(dif accent(v, arrow), dif t)$ (where $accent(v, arrow)$ = velocity)
-  - $accent(v, arrow) = frac(dif accent(r, arrow), dif t)$ (where $accent(r, arrow)$ = displacement)
-  - $therefore accent(a, arrow) = frac(dif^2 accent(r, arrow), dif t^2)$ (which is a second order equation)
+  - $arrow(a)$ = acceleration (a derivative of velocity wr.t. time).
+  - $arrow(a) = frac(dif arrow(v), dif t)$ (where $arrow(v)$ = velocity)
+  - $arrow(v) = frac(dif arrow(r), dif t)$ (where $arrow(r)$ = displacement)
+  - $therefore arrow(a) = frac(dif^2 arrow(r), dif t^2)$ (which is a second order equation)
 ]
 
 #example[
