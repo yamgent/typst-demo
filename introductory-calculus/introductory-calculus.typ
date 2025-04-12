@@ -260,7 +260,7 @@ The final form is two direct integrations that we can solve separately.
     x(y^2 - 1) - y(x^2 - 1) dot.op frac(dif y, dif x) &= 0 \
     y(x^2 - 1) dot.op frac(dif y, dif x) &= -x (y^2 - 1) \
     frac(y, y^2 - 1) dot.op frac(dif y, dif x) &= - frac(x, x^2 - 1) #h(3cm) (arrow.l.long.squiggly) \
-    underbrace(integral frac(y, y^2 - 1) dif y, "use absolute values") &= underbrace(integral frac(x, 1 - x^2) dif x, "derivative of a log =" D) \
+    #text(fill:blue)[$underbrace(#text(fill:black)[$integral frac(y, y^2 - 1) dif y$], "use absolute values")$] &= #text(fill:red)[$underbrace(#text(fill:black)[$integral frac(x, 1 - x^2) dif x$], "derivative of a log =" D)$] \
   $
 
   #rect[$D: [ln (1-x^2)]' = frac(-2x, 1-x^2)$]
@@ -275,16 +275,16 @@ The final form is two direct integrations that we can solve separately.
   $
     &... \
     frac(1, 2) ln |(y^2 - 1)|(1 - x^2) &= C \
-    |(y^2 - 1)|(1 - x^2) &= e^(2C) => zeta (> 0)
+    |(y^2 - 1)|(1 - x^2) &= e^(2C) => cal(C) (> 0)
   $
 
-  Therefore, the answer is $|y^2 - 1|underbrace((1 - x^2), > 0) = zeta$ where $zeta > 0$.
+  Therefore, the answer is $|y^2 - 1|underbrace((1 - x^2), > 0) = cal(C)$ where $cal(C) > 0$.
 
-  We can drop the absolute to drop the assumption of $zeta$, to get a better looking answer.
+  We can drop the absolute to drop the assumption of $cal(C)$, to get a better looking answer.
 
-  $ (1-y^2)(1-x^2) = zeta $
+  $ (1-y^2)(1-x^2) = cal(C) $
 
-  ...except $zeta$ cannot be 0, which doesn't sound like solid math. We lost that case in ($arrow.l.long.squiggly$). $y^2 - 1 != 0$, but we need to allow that because $y$ could be $plus.minus 1.$
+  ...except $cal(C)$ cannot be 0, which doesn't sound like solid math. We lost that case in ($arrow.l.long.squiggly$). $y^2 - 1 != 0$, but we need to allow that because $y$ could be $plus.minus 1.$
 
-  $y = plus.minus 1$ is included in the solution if we allow $zeta = 0$ in the answer. Hence $zeta$ can now be any constants.
+  $y = plus.minus 1$ is included in the solution if we allow $cal(C) = 0$ in the answer. Hence $cal(C)$ can now be any constants.
 ]
