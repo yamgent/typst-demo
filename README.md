@@ -24,6 +24,16 @@ Most of the content in this demo showcases the relative ease of using Typst with
 
 ![calculus_demo](./screenshots/calculus_demo.png)
 
+### 02 - The Geometry of Linear Equations
+
+Even though we are still in the realm of mathematics, unlike the first demo, there's more visuals going on in the notes. After all, this is the famous first lecture of the linear algebra course from Prof Gilbert Strang, that gives an important insight of the entirety of linear algebra through the visual explanation.
+
+Other than showcasing the matrices, we also showcase `cetz`, which is kind of the typst's version of LaTeX's `tikz`, in order to draw the geometries that were explained in the lectures.
+
+![linear_algebra_demo](./screenshots/linear_algebra_demo.png)
+
+![linear_algebra_demo_2](./screenshots/linear_algebra_demo_2.png)
+
 ### Others
 
 Coming soon...
