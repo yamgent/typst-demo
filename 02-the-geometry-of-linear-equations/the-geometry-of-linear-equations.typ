@@ -111,13 +111,13 @@ The #underline[geometry] form of the column picture is:
           domain: (-5, 5),
           ((0, 0), (-1, 2)),
           label: [Col 1],
-          style: (stroke: (paint: blue, thickness: 1.5pt), mark: (end: ">")),
+          style: (stroke: (paint: blue, thickness: 1.5pt), mark: (fill: blue, end: ">")),
         )
         plot.add(
           domain: (-5, 5),
           ((0, 0), (2, -1)),
           label: [Col 2],
-          style: (stroke: (paint: green, thickness: 1.5pt), mark: (end: ">"))
+          style: (stroke: (paint: green, thickness: 1.5pt), mark: (fill: green, end: ">"))
         )
       }
     )
@@ -150,25 +150,25 @@ The new picture is:
           domain: (-5, 5),
           ((0, 0), (-1, 2)),
           label: [Col 1],
-          style: (stroke: (paint: blue, thickness: 1.5pt), mark: (end: ">")),
+          style: (stroke: (paint: blue, thickness: 1.5pt), mark: (fill: blue, end: ">")),
         )
         plot.add(
           domain: (-5, 5),
           ((0, 0), (2, -1)),
           label: [Col 2],
-          style: (stroke: (paint: green, thickness: 1.5pt), mark: (end: ">"))
+          style: (stroke: (paint: green, thickness: 1.5pt), mark: (fill: green, end: ">"))
         )
         plot.add(
           domain: (-5, 5),
           ((0, 0), (0, 3)),
           label: [$b$],
-          style: (stroke: (paint: black, thickness: 2pt), mark: (end: ">"))
+          style: (stroke: (paint: black, thickness: 2pt), mark: (fill: black, end: ">"))
         )
         plot.add(
           domain: (-5, 5),
           ((2, -1), (0, 3)),
           label: [$+ 2 dot.op "Col 2"$],
-          style: (stroke: (paint: black, thickness: 1pt, dash: "dashed"))
+          style: (stroke: (paint: black, thickness: 1pt, dash: "dashed"), mark: (fill: black, end: ">"))
         )
       }
     )
@@ -205,15 +205,15 @@ This is getting a bit more complicated, so the drawing is not entirely accurate,
 
     // axes
     line((0, 0), (3, 0))
-    mark((3, 0), (4, 0), symbol: ">", stroke: black)
+    mark((3, 0), (4, 0), symbol: ">", fill: black, stroke: black)
     content((3.5, 0), [y])
 
     line((0, 0), (0, 3))
-    mark((0, 3), (0, 4), symbol: ">", stroke: black)
+    mark((0, 3), (0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 3.5), [z])
 
     line((0, 0), (0, 0, 3))
-    mark((0, 0, 3), (0, 0, 4), symbol: ">", stroke: black)
+    mark((0, 0, 3), (0, 0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 0, 3.5), [x])
 
     // plane 1
@@ -236,17 +236,14 @@ This is getting a bit more complicated, so the drawing is not entirely accurate,
   })
 ]
 
-We can get 3 points from equation 2: $(1, 0, 0)$, $(0, 0, 1)$, $(0, -1/2, 0)$.
+- We can get 3 points from equation 2: $(1, 0, 0)$, $(0, 0, 1)$, $(0, -1/2, 0)$.
+- 3 points form a plane, so each equation is actually a plane.
+- Two planes meet in a line.
+- Three planes meet in a point.
 
-3 points form a plane, so each equation is actually a plane.
+We don't know what is the point that they will meet, but the main idea is that as the 3 planes are not parallel, they have a solution.
 
-Two planes meet in a line.
-
-Three planes meet in a point.
-
-We don't know what the point is that they meet, but the main idea is that as the 3 planes are not parallel, they have a solution.
-
-* $star$ The problem with the row picture: it is getting harder to visualize the problem as the amount of dimensions increase.* What about 4D, 5D, etc? Almost impossible.
+* $star$ The problem with the row picture: it is getting harder to visualize the problem as the amount of dimensions increase.* What about 4D, 5D, etc? Quite impossible.
 
 == Column picture
 
@@ -264,30 +261,30 @@ The #underline[geometry] form of the column picture is:
 
     // axes
     line((0, 0), (3, 0))
-    mark((3, 0), (4, 0), symbol: ">", stroke: black)
+    mark((3, 0), (4, 0), symbol: ">", fill: black, stroke: black)
     content((3.5, 0), [y])
 
     line((0, 0), (0, 3))
-    mark((0, 3), (0, 4), symbol: ">", stroke: black)
+    mark((0, 3), (0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 3.5), [z])
 
     line((0, 0), (0, 0, 3))
-    mark((0, 0, 3), (0, 0, 4), symbol: ">", stroke: black)
+    mark((0, 0, 3), (0, 0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 0, 3.5), [x])
 
     // col 1
     line((0, 0), (-1, 0, 2), stroke: blue)
-    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", stroke: blue)
+    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", fill: blue, stroke: blue)
     content((-1, 0.5, 2), [Col 1])
 
     // col 2
     line((0, 0), (2, -3, -1), stroke: red)
-    mark((2, -3, -1), (4, -6, -2), symbol: ">", stroke: red)
+    mark((2, -3, -1), (4, -6, -2), symbol: ">", fill: red, stroke: red)
     content((2, -2, -1), [Col 2])
 
     // col 3
     line((0, 0), (-1, 4, 0), stroke: gray)
-    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", stroke: gray)
+    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", fill: gray, stroke: gray)
     content((-1, 4.5, 0), [Col 3])
   })
 ]
@@ -302,35 +299,35 @@ This problem is specially chosen, so that the solution is deliberately $x = 0, y
 
     // axes
     line((0, 0), (3, 0))
-    mark((3, 0), (4, 0), symbol: ">", stroke: black)
+    mark((3, 0), (4, 0), symbol: ">", fill: black, stroke: black)
     content((3.5, 0), [y])
 
     line((0, 0), (0, 3))
-    mark((0, 3), (0, 4), symbol: ">", stroke: black)
+    mark((0, 3), (0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 3.5), [z])
 
     line((0, 0), (0, 0, 3))
-    mark((0, 0, 3), (0, 0, 4), symbol: ">", stroke: black)
+    mark((0, 0, 3), (0, 0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 0, 3.5), [x])
 
     // col 1
     line((0, 0), (-1, 0, 2), stroke: blue)
-    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", stroke: blue)
+    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", fill: blue, stroke: blue)
     content((-1, 0.5, 2), [Col 1])
 
     // col 2
     line((0, 0), (2, -3, -1), stroke: red)
-    mark((2, -3, -1), (4, -6, -2), symbol: ">", stroke: red)
+    mark((2, -3, -1), (4, -6, -2), symbol: ">", fill: red, stroke: red)
     content((2, -2, -1), [Col 2])
 
     // col 3
     line((0, 0), (-1, 4, 0), stroke: gray)
-    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", stroke: gray)
+    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", fill: gray, stroke: gray)
     content((-1, 4.5, 0), [Col 3 = $bold(upright(b))$])
 
     // b
     line((0, 0), (-1, 4, 0), stroke: (paint: yellow, thickness: 2pt))
-    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", stroke: yellow)
+    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", fill: yellow, stroke: yellow)
   })
 ]
 
@@ -338,7 +335,7 @@ Of course, not all problems will have such an obvious solution (next lecture wil
 
 But let's come back to the big picture: what if right-hand side is different?
 
-Change it, such that we add col 1 to col 2:
+Change it, such that we add Col 1 to Col 2 to get our new $bold(upright(b))$:
 
 #math.equation(numbering: "(1)", block: true, $x mat(2; -1; 0) + y mat(-1; 2; -3) + z mat(0; -1; 4) = mat(1; 1; -3)$)<colpicture2>
 
@@ -355,36 +352,36 @@ What happens to the row picture and col picture?
 
     // axes
     line((0, 0), (3, 0))
-    mark((3, 0), (4, 0), symbol: ">", stroke: black)
+    mark((3, 0), (4, 0), symbol: ">", fill: black, stroke: black)
     content((3.5, 0), [y])
 
     line((0, 0), (0, 3))
-    mark((0, 3), (0, 4), symbol: ">", stroke: black)
+    mark((0, 3), (0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 3.5), [z])
 
     line((0, 0), (0, 0, 3))
-    mark((0, 0, 3), (0, 0, 4), symbol: ">", stroke: black)
+    mark((0, 0, 3), (0, 0, 4), symbol: ">", fill: black, stroke: black)
     content((0, 0, 3.5), [x])
 
     // col 1
     line((0, 0), (-1, 0, 2), stroke: blue)
-    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", stroke: blue)
+    mark((-1, 0, 2), (-2, 0, 4), symbol: ">", fill: blue, stroke: blue)
     content((-1, 0.5, 2), [Col 1])
 
     // col 2
     line((0, 0), (2, -3, -1), stroke: red)
-    mark((2, -3, -1), (4, -6, -2), symbol: ">", stroke: red)
+    mark((2, -3, -1), (4, -6, -2), symbol: ">", fill: red, stroke: red)
     content((2, -2, -1), [Col 2])
 
     // col 3
     line((0, 0), (-1, 4, 0), stroke: gray)
-    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", stroke: gray)
+    mark((-1, 4, 0), (-2, 8, 0), symbol: ">", fill: gray, stroke: gray)
     content((-1, 4.5, 0), [Col 3])
 
     // b
     line((0, 0), (1, -3, 1), stroke: (paint: yellow, thickness: 2pt))
-    mark((1, -3, 1), (2, -6, 2), symbol: ">", stroke: yellow)
-    content((1, -3.5, 1), [$bold(upright(b))$])
+    mark((1, -3, 1), (2, -6, 2), symbol: ">", fill: yellow, stroke: yellow)
+    content((1, -3.5, 1), [$bold(upright(b))$ = Col 1 + Col 2])
 
     // dashes
     line((-1, 0, 2), (1, -3, 1), stroke: (dash: "dashed"))
@@ -397,7 +394,7 @@ Now think: can we solve this for *all* right hand side? Is there a solution for 
 _Formally:_ 
 
 + Can I solve $A bold(upright(x)) = bold(upright(b))$ for every $bold(upright(b))$?
-+ Do the linear combinations of the columns fill entire 3D space?
++ Do the linear combinations of the columns fill up the entire 3D space?
 
 It appears as if both questions are different from a different POV, but both are actually asking the same thing - I get a combination of the columns.
 
@@ -429,13 +426,13 @@ We can also still ask: can we get all RHS $bold(upright(b))$?
 
 If columns chosen are not independent: Col 9 is the same as Col 8, then Col 9 contributes nothing new, possible to have a $bold(upright(b))$ that I cannot get.
 
-Think about 9 vectors in 9D, take combination - this is the central thought in linear algebra. Even though 9D space is still hard to visualize (like in row picture), we can still easily visualize the vectors.
+Think about 9 vectors in 9D, take combination - this is the central thought in linear algebra. Even though 9D space is still hard to visualize, we can still easily visualize the vectors.
 
 * $star$ In Col picture, everything is still just arrows, making visualization less of a problem. *
 
 = Matrix Form of the Equation
 
-Up till now, we have been using a very core concept that we haven't explore.
+Up till now, we have been using a very core concept that we haven't really explained.
 
 How to multiple a matrix by a vector? For example:
 
@@ -443,8 +440,8 @@ $ mat(2, 5; 1, 3) mat(1; 2) $
 
 2 ways:
 
-+ Rows way / dot product (which is what we usually learn first): $ mat(2 * 1 + 5 * 2; 1 * 1 + 3 * 2) = mat(12; 7) $
-+ Columns way (what we have been doing the entire lecture): $ 1 mat(2; 1) + 2 mat(5; 3) = mat(12; 7) $
++ Rows way / dot product (which is what we usually learn first when doing matrix multiplication): $ mat(2 * 1 + 5 * 2; 1 * 1 + 3 * 2) = mat(12; 7) $
++ * $star$ Columns way * (what we have been doing the entire lecture): $ 1 mat(2; 1) + 2 mat(5; 3) = mat(12; 7) $
 
 The columns way is basically saying that $A bold(upright(x))$ is a combination of the columns of $A$.
 
